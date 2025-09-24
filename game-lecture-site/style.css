@@ -1,0 +1,127 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #4e54c8 0%, #8f94fb 100%);
+    color: #fff;
+    padding: 96px 56px 48px 56px;
+    box-shadow: 0 2px 8px rgba(78,84,200,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: padding 0.3s, font-size 0.3s;
+}
+
+header.shrink {
+    padding: 24px 40px 12px 40px; /* 작아질 때 */
+}
+
+
+header h1 {
+    font-size: 4rem;
+    margin: 0;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+header.shrink h1 {
+    font-size: 1.8rem; /* 작아질 때 */
+}
+
+nav {
+    display: flex;
+    gap: 12px;
+}
+
+nav button {
+    background: #fff;
+    color: #4e54c8;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(78,84,200,0.08);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+nav button:hover {
+    background: #4e54c8;
+    color: #fff;
+    transform: translateY(-2px) scale(1.05);
+}
+
+.main-intro {
+    text-align: center;
+    padding: 80px 20px 60px 20px;
+    background: linear-gradient(180deg, #e0e7ff 0%, #fff 100%);
+    border-radius: 0 0 32px 32px;
+    margin-bottom: 40px;
+}
+
+.main-intro h2 {
+    font-size: 2rem;
+    color: #4e54c8;
+    margin-bottom: 24px;
+}
+
+.main-intro p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.button-section {
+    display: flex;
+    justify-content: center;
+    margin: 60px 0;
+}
+
+.big-btn {
+    font-size: 1.4rem;
+    padding: 24px 48px;
+    border-radius: 32px;
+    border: none;
+    background: #4e54c8;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(78,84,200,0.12);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.big-btn:hover {
+    background: #8f94fb;
+    transform: scale(1.05);
+}
+
+.content-section {
+    max-width: 600px;
+    margin: 60px auto 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(78,84,200,0.08);
+    padding: 32px;
+    display: block;
+}
+.title-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: color 0.2s, text-shadow 0.2s;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.title-btn:hover,
+.title-btn:focus {
+    color: #ffd700;
+    text-shadow: 0 0 8px #fff, 0 0 16px #4e54c8;
+    outline: none;
+}
