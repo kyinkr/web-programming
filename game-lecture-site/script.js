@@ -133,17 +133,36 @@ window.addEventListener('DOMContentLoaded', ()=>{
   bind('homeBtn', ()=>showOnly('about'));
 
   // 테마 토글
-  const themeBtn=document.getElementById('toggleThemeBtn');
-  const updateThemeBtn=()=>{
-    const dark=document.documentElement.classList.contains('dark');
-    if (themeBtn){ themeBtn.textContent = dark ? '☀️ 라이트' : '🌙 다크'; themeBtn.setAttribute('aria-pressed', String(dark)); }
-  };
-  if (themeBtn) themeBtn.addEventListener('click', ()=>{
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', document.documentElement.classList.contains('dark')?'dark':'light');
-    updateThemeBtn();
-  });
-  updateThemeBtn();
+  // ==== 다크 모드 토글 (신뢰성 강화) ====
+  function setTheme(mode){ // 'dark' | 'light'
+    const isDark = mode === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+    const btn = document.getElementById('toggleThemeBtn');
+    if (btn){
+      tn.textContent = isDark ? '☀️ 라이트' : '🌙 다크';
+      btn.setAttribute('aria-pressed', String(isDark));
+   }
+}
+
+  function initTheme(){
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || saved === 'light'){
+      setTheme(saved);
+    } else {
+      const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+      setTheme(prefersDark ? 'dark' : 'light');
+   }
+}
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    initTheme();
+    document.getElementById('toggleThemeBtn')?.addEventListener('click', ()=>{
+      const nowDark = document.documentElement.classList.contains('dark');
+      setTheme(nowDark ? 'light' : 'dark');
+    });
+});
 
   // 검색/필터/정렬/더보기
   const search=document.getElementById('searchInput');
