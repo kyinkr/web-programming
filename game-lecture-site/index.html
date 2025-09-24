@@ -1,53 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게임 강의 사이트</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>프로게이머 아카데미 | Esports Academy</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <button id="homeBtn" class="title-btn">게임 강의 사이트</button>
-        <nav>
-            <button id="navCoursesBtn">강의 목록</button>
-            <button id="navContactBtn">문의하기</button>
-        </nav>
-    </header>
-    
-    <main>
-        <section id="about" class="main-intro">
-            <h2>소개</h2>
-            <p>
-                이 사이트는 게임 개발에 관심 있는 분들을 위한 강의 플랫폼입니다.<br>
-                최신 게임 트렌드, 개발 방법, 실전 노하우 등 다양한 정보를 제공합니다.<br>
-                게임을 좋아하는 누구나 쉽게 배우고 성장할 수 있도록 돕겠습니다!
-            </p>
-        </section>
-        
-        <section class="button-section">
-            <button class="big-btn" id="goCoursesBtn">강의 목록 바로가기</button>
-        </section>
-        
-        <section id="courses" class="content-section">
-            <h2>강의 목록</h2>
-            <p>여기에서 다양한 게임 강의를 찾아보세요.</p>
-        </section>
-        
-        <section class="button-section">
-            <button class="big-btn" id="goContactBtn">문의하기</button>
-        </section>
-        
-        <section id="contact" class="content-section">
-            <h2>연락처</h2>
-            <p>문의 사항이 있으시면 이메일로 연락주세요.</p>
-        </section>
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 게임 강의 사이트. 모든 권리 보유.</p>
-    </footer>
+  <!-- 헤더 -->
+  <header class="site-header">
+    <button type="button" id="homeBtn" class="title-btn" aria-label="홈으로" data-ripple>Esports Academy</button>
+    <nav class="site-nav" aria-label="주 메뉴">
+      <button type="button" id="navCoursesBtn" class="nav-btn" data-ripple>코스</button>
+      <button type="button" id="navInstructorsBtn" class="nav-btn" data-ripple>코치진</button>
+      <button type="button" id="navContactBtn" class="nav-btn" data-ripple>문의</button>
+      <button type="button" id="toggleThemeBtn" class="nav-btn ghost" aria-pressed="false" data-ripple>🌙 다크</button>
+    </nav>
+  </header>
 
-    <script src="script.js"></script>
+  <main>
+    <!-- 히어로 / 소개 -->
+    <section id="about" class="hero-section">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1>랭크를 넘어서, <span class="accent">프로의 루틴</span>으로</h1>
+          <p class="hero-sub">
+            FPS · MOBA · 배틀로얄 · <b>멘탈</b> · <b>피지컬</b> · <b>팀 커뮤니케이션</b><br />
+            스크림/VOD 리뷰와 데이터 분석으로 <b>실전 승률</b>을 끌어올리세요.
+          </p>
+          <div class="hero-actions">
+            <button type="button" class="btn primary" id="goCoursesBtn" data-ripple>🔥 인기 코스 보기</button>
+            <button type="button" class="btn secondary" id="goContactBtn" data-ripple>팀/단체 코칭 문의</button>
+          </div>
+          <ul class="hero-bullets">
+            <li>개인/팀 맞춤 트레이닝 플랜</li>
+            <li>데이터 기반 리플레이 분석</li>
+            <li>대회 주간 컨디셔닝</li>
+          </ul>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="grid-pixels"></div>
+          <div class="floating-chip chip-a">🎯</div>
+          <div class="floating-chip chip-b">🧠</div>
+          <div class="floating-chip chip-c">🎙️</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 코스 섹션 -->
+    <section id="courses" class="section">
+      <div class="section-head">
+        <h2>코스 목록</h2>
+        <p class="muted">장르/스킬별 필터 · 정렬로 원하는 코스를 바로 찾기</p>
+      </div>
+
+      <!-- 컨트롤 바 -->
+      <div class="controls">
+        <div class="search-box">
+          <input id="searchInput" type="search" placeholder="검색 (ex. 에임, 매크로, 샷콜, 멘탈)" aria-label="코스 검색" />
+        </div>
+        <div class="filters" role="group" aria-label="카테고리 필터">
+          <button type="button" class="chip is-active" data-filter="all" data-ripple>전체</button>
+          <button type="button" class="chip" data-filter="Valorant" data-ripple>발로란트</button>
+          <button type="button" class="chip" data-filter="LoL" data-ripple>LoL</button>
+          <button type="button" class="chip" data-filter="BattleRoyale" data-ripple>배틀로얄</button>
+          <button type="button" class="chip" data-filter="OW2" data-ripple>오버워치2</button>
+          <button type="button" class="chip" data-filter="Aim" data-ripple>에임</button>
+          <button type="button" class="chip" data-filter="Macro" data-ripple>매크로</button>
+          <button type="button" class="chip" data-filter="Team" data-ripple>팀</button>
+          <button type="button" class="chip" data-filter="Mental" data-ripple>멘탈</button>
+          <button type="button" class="chip" data-filter="Physio" data-ripple>피지컬</button>
+          <button type="button" class="chip" data-filter="Streaming" data-ripple>스트리밍</button>
+        </div>
+        <div class="sort-box">
+          <label for="sortSelect" class="muted">정렬</label>
+          <select id="sortSelect">
+            <option value="popular">인기순</option>
+            <option value="rating">평점순</option>
+            <option value="new">최신순</option>
+            <option value="duration">코스 시간(짧은순)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 코스 그리드 -->
+      <div id="courseGrid" class="course-grid" aria-live="polite"></div>
+
+      <!-- 페이징 -->
+      <div class="pager">
+        <button type="button" id="loadMoreBtn" class="btn tertiary" data-ripple>더 보기</button>
+      </div>
+    </section>
+
+    <!-- 코치진 섹션 -->
+    <section id="instructors" class="section">
+      <div class="section-head">
+        <h2>코치진</h2>
+        <p class="muted">프로팀 출신 코치 · 애널리스트 · 컨디셔닝 전문가</p>
+      </div>
+      <div class="instructor-grid">
+        <article class="instructor-card">
+          <div class="avatar">MS</div>
+          <h3>민수 (FPS 코치)</h3>
+          <p>AIM·크로스헤어·이동/각도·유틸 라인업까지 에임 파운데이션 설계.</p>
+          <ul class="pill-list"><li>FPS</li><li>Aim</li><li>VOD</li></ul>
+        </article>
+        <article class="instructor-card">
+          <div class="avatar">JW</div>
+          <h3>지원 (MOBA 애널리스트)</h3>
+          <p>드래프트/라인 프리오/오브젝트 컨트롤 중심의 매크로 코칭.</p>
+          <ul class="pill-list"><li>MOBA</li><li>Macro</li><li>Team</li></ul>
+        </article>
+        <article class="instructor-card">
+          <div class="avatar">TR</div>
+          <h3>태리 (멘탈·피지컬)</h3>
+          <p>대회 루틴·호흡·시력·자세·회복 주기 등 컨디셔닝 전담.</p>
+          <ul class="pill-list"><li>Mental</li><li>Physio</li><li>Routine</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- 문의 섹션 -->
+    <section id="contact" class="section">
+      <div class="section-head">
+        <h2>문의하기</h2>
+        <p class="muted">개인 레슨 / 팀 합숙 코칭 / 단체 워크숍</p>
+      </div>
+      <form id="contactForm" class="contact-form" novalidate>
+        <div class="form-grid">
+          <label>이름
+            <input type="text" id="name" required placeholder="홍길동" />
+          </label>
+          <label>이메일
+            <input type="email" id="email" required placeholder="you@example.com" />
+          </label>
+          <label>관심 트랙
+            <select id="track">
+              <option>FPS</option>
+              <option>MOBA</option>
+              <option>배틀로얄</option>
+              <option>팀 커뮤니케이션</option>
+              <option>멘탈/피지컬</option>
+              <option>스트리밍</option>
+            </select>
+          </label>
+          <label class="full">메시지
+            <textarea id="message" rows="5" required placeholder="목표 티어/포지션/게임/희망 코칭 형태를 적어주세요."></textarea>
+          </label>
+        </div>
+        <div class="form-actions">
+          <button class="btn primary" type="submit" data-ripple>보내기</button>
+          <p id="formMsg" class="form-msg" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Esports Academy. All rights reserved.</p>
+  </footer>
+
+  <!-- 코스 상세 모달 -->
+  <dialog id="courseModal" class="modal">
+    <article class="modal-card">
+      <button type="button" class="modal-close" aria-label="닫기" data-ripple>✕</button>
+      <div class="modal-media" id="modalMedia" aria-hidden="true"></div>
+      <div class="modal-body">
+        <h3 id="modalTitle">코스 제목</h3>
+        <p id="modalMeta" class="muted"></p>
+        <p id="modalDesc"></p>
+        <h4>커리큘럼 하이라이트</h4>
+        <ul id="modalSyllabus" class="syllabus"></ul>
+        <div class="modal-actions">
+          <button type="button" class="btn primary" data-ripple>코칭 신청</button>
+          <button type="button" class="btn secondary" id="modalPreviewBtn" data-ripple>샘플 VOD</button>
+        </div>
+      </div>
+    </article>
+  </dialog>
+
+  <!-- defer로 스크립트 로딩 보장 -->
+  <script src="script.js" defer></script>
 </body>
 </html>
