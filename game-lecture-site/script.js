@@ -6,7 +6,6 @@ function handleHeaderShrink() {
   const header = document.querySelector('header');
   const shrinkPoint = 120;
   const expandPoint = 80; // Hysteresis point
-
   if (!header) return;
 
   const scrollY = window.scrollY;

@@ -41,16 +41,17 @@ header {
     align-items: center;
     background: linear-gradient(90deg, #4e54c8 0%, #8f94fb 100%);
     color: #fff;
-    padding: 96px 56px 48px 56px;
+    padding: 24px 40px;
     box-shadow: 0 2px 8px rgba(78,84,200,0.08);
     position: sticky;
     top: 0;
     z-index: 100;
-    transition: padding 0.3s, font-size 0.3s;
+    transition: transform 0.3s;
+    transform-origin: top;
 }
 
 header.shrink {
-    padding: 24px 40px 12px 40px; /* 작아질 때 */
+    transform: scaleY(0.65);
 }
 
 
@@ -59,11 +60,17 @@ header h1 {
     margin: 0;
     letter-spacing: 2px;
     font-weight: 700;
+    transition: transform 0.3s;
 }
 
-header.shrink h1 { font-size: 1.8rem; }
+header.shrink h1 {
+    transform: scale(0.45);
+}
 
-header.shrink .title-btn { font-size: 1.8rem; }
+header.shrink .title-btn {
+    transform: scale(0.45);
+}
+
 
 
 
